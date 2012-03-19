@@ -1,0 +1,27 @@
+<?php
+$os="windows";
+$platform="desktop";
+$DOMObject = new DOMDocument("1.0");
+
+header("Content-Type: text/plain");
+
+$root_element = $DOMObject->createElement("OBA");
+
+$DOMObject->appendChild($root_element);
+
+$root_item1 = $DOMObject->createElement("OS");
+$root_element->appendChild($root_item1);
+
+$root_item_text1 = $DOMObject->createTextNode($os);
+$root_item1->appendChild($root_item_text1);
+
+$root_item2 = $DOMObject->createElement("Platform");
+$root_element->appendChild($root_item2);
+
+$root_item_text2 = $DOMObject->createTextNode($platform);
+$root_item2->appendChild($root_item_text2);
+
+$DOMObject->save('OBA.xml');
+
+echo $DOMObject->saveXML();
+?>
